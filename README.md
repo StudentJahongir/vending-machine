@@ -3,6 +3,7 @@
 
 This is a simple console-based vending machine written in Python.  
 You can select a product by code, pay for it, and receive change.
+codes: 111, 211, 311, 411, 511, 611, 711, 811, 911, 1011.
 
 ## How to Run in VS Code
 
