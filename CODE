@@ -1,0 +1,51 @@
+machine = {
+    '111': {'name': 'pepsi', 'price': 14599, 'quantity': 2},
+    '221': {'name': 'cocacola', 'price': 12459, 'quantity': 7},
+    '311': {'name': 'fanta', 'price': 12000, 'quantity': 41},
+    '411': {'name': 'cheers', 'price': 1479, 'quantity': 24},
+    '511': {'name': 'lays', 'price': 1449, 'quantity': 22},
+    '611': {'name': 'sprite', 'price': 14339, 'quantity': 13},
+    '711': {'name': 'icetea', 'price': 141999, 'quantity': 1},
+    '811': {'name': 'burger', 'price': 64199, 'quantity': 6},
+    '911': {'name': 'tea', 'price': 1799, 'quantity': 4},
+    '1011': {'name': 'lemonade', 'price': 14799, 'quantity': 2}
+}
+
+def start_machine():
+    code = input("Enter product code (or type 'exit' to quit): ").strip()
+    if code.lower() == 'exit':
+        return False  
+
+    if code in machine:
+        product = machine[code]
+        name = product['name']
+        price = product['price']
+        quantity = product['quantity']
+
+        if quantity == 0:
+            print(f"❌ {name} is out of stock")
+        else:
+            try:
+                cash = int(input(f"Please pay {price} so'm for {name}: "))
+            except ValueError:
+                print("❌ Enter a valid number")
+                return True
+
+            if cash >= price:
+                print("✅ Payment successful")
+                machine[code]['quantity'] -= 1  
+                change = cash - price
+                if change > 0:
+                    print(f" Your change: {change} so'm")
+            else:
+                print("❌ Not enough money")
+    else:
+        print("❌ Invalid code")
+    return True
+
+# Главный цикл
+while True:
+    if not start_machine():
+        break
+
+print("Goodbye! ")
