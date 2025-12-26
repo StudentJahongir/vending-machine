@@ -43,7 +43,7 @@ def start_machine():
         print("❌ Invalid code")
     return True
 
-# Главный цикл
+
 while True:
     if not start_machine():
         break
